@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="mini_games.JigsawPuzzle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mini_games"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" FontSize="20" >
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="AliceBlue"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Image x:Name="img_src"/>
+            <Button x:Name="btn_selectImg" Content="选择图片" Click="btn_selectImg_Click"/>
+            <GroupBox Header="模式" Foreground="AliceBlue">
+                <UniformGrid Columns="2">
+                    <RadioButton x:Name="rbt4" Foreground="AliceBlue" Content="4×4"  IsChecked="True"/>
+                    <RadioButton x:Name="rbt5" Foreground="AliceBlue"  Content="5×5" />
+                    <RadioButton x:Name="rbt7" Foreground="AliceBlue" Content="7×7" />
+                    <RadioButton x:Name="rbt10" Foreground="AliceBlue" Content="10×10" />
+                </UniformGrid>
+            </GroupBox>
+            <Button x:Name="btn_ShuffleImg" Content="一键生成" Click="btn_ShuffleImg_Click" Margin="0 5"/>
+            <ToggleButton x:Name="btn_removeMargin" Content="间隙" Click="btn_removeMargin_Click" Margin="0 5"/>
+            <Button  x:Name="dd" Content="复原" Click="btn_restorImg_Click" />
+            <Label Content="计时:"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="0" Name="lb_m"/>
+                <Label Content="m"/>
+                <Label Content="0" Name="lb_s"/>
+                <Label Content="s"/>
+            </StackPanel>
+        </StackPanel>
+        <GridSplitter HorizontalAlignment="Stretch" Grid.Column="1" Background="DarkGreen"/>
+        <Grid x:Name="grid" Grid.Column="2" MouseRightButtonDown="grid_MouseRightButtonDown"/>
+        <Image x:Name="ok" Visibility="Collapsed" Grid.Column="2" Source="OK.png" Width="500" Height="500"/>
+    </Grid>
+</UserControl>
